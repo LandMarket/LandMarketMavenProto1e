@@ -15,6 +15,7 @@ import java.util.*;
  */
 @RestController
 @RequestMapping("/seller")
+@CrossOrigin
 public class SellerController {
     @Autowired
     SellerRepository srepository;
