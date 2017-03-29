@@ -24,16 +24,16 @@ public class SellerController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> createSeller(@RequestBody Map<String, Object> sellerMap) {
-//    Seller seller = new Seller(sellerMap.get("passport").toString(),
+    Seller seller = new Seller(
+            //sellerMap.get("passport").toString(),
 //            sellerMap.get("companyName").toString(),
 //            sellerMap.get("phone").toString(),
 //            sellerMap.get("address").toString(),
 //            sellerMap.get("email").toString(),
 //            sellerMap.get("managerName").toString(),
 //            sellerMap.get("skype").toString(),
-//            sellerMap.get("login").toString(),
-//            sellerMap.get("password").toString()
-//            );
+           sellerMap.get("login").toString(),
+         sellerMap.get("password").toString());
 
 
         String login = sellerMap.get("login").toString();
