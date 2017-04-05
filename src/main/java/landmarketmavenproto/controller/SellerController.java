@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-/**
- * Created by Nik_NB on 18.03.2017.
- */
 @RestController
 @RequestMapping("/seller")
 @CrossOrigin
