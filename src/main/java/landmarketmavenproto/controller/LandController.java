@@ -1,5 +1,8 @@
 package landmarketmavenproto.controller;
 
+import com.mongodb.DB;
+import com.mongodb.gridfs.GridFS;
+import com.mongodb.gridfs.GridFSInputFile;
 import landmarketmavenproto.model.Land;
 import landmarketmavenproto.repository.LandRepository;
 import net.minidev.json.JSONObject;
@@ -8,12 +11,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Nik_NB on 19.03.2017.
- */
+
 @RestController
 @RequestMapping("/land")
 public class LandController {
@@ -82,5 +85,11 @@ public class LandController {
         response.put("lands", lands);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+//    public byte[] imagesBytes {
+//        GridFS fs= new GridFS(land, "photo");
+//        GridFSInputFile in =fs.createFile(imagesBytes);
+//        in.save();
+//
+//    }
 
 }
