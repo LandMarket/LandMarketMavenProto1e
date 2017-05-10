@@ -13,6 +13,7 @@ public class Land {
     private String description;
     private String address;
     private String owner;
+
     public Land() {
     }
 

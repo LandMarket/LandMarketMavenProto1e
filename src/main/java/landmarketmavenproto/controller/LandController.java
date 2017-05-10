@@ -41,7 +41,7 @@ public class LandController {
         String owner = landMap.get("owner").toString();
         //JSONObject response = new JSONObject();
         //response.put("message", "land created successfully");
-        return new ResponseEntity<>(lrepository.save(new Land(area, assignment, price,description, address,owner)), HttpStatus.OK);
+        return new ResponseEntity<>(lrepository.save(new Land(area, assignment, price, description, address,owner)), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{landId}")
@@ -56,7 +56,7 @@ public class LandController {
                 landMap.get("assignment").toString(),
                 landMap.get("price").toString(), landMap.get("description").toString(),
                 landMap.get("address").toString(), landMap.get("owner").toString());
-        land.setId(landId);
+                land.setId(landId);
 
 //        Map<String, Object> response = new LinkedHashMap<String, Object>();
 //        response.put("message", "land updates successfully");
@@ -91,11 +91,6 @@ public class LandController {
         response.put("lands", lands);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-//    public byte[] imagesBytes {
-//        GridFS fs= new GridFS(land, "photo");
-//        GridFSInputFile in =fs.createFile(imagesBytes);
-//        in.save();
-//
-//    }
+
 
 }
