@@ -13,7 +13,7 @@ public class Seller {
 //    private String companyName;
 //    private String phone;
 //    private String address;
- //     private String email;
+      private String email;
 //    private String managerName;
 //    private String skype;
     @Field("login")
@@ -37,9 +37,10 @@ public class Seller {
 //        this.password = password;
 //    }
 
-    public Seller(String login, String password) {
+    public Seller(String login, String password, String email) {
         this.login = login;
         this.password = password;
+        this.email=email;
     }
 
     public String getId() {
@@ -82,13 +83,13 @@ public class Seller {
 //        this.address = address;
 //    }
 //
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 //
 //    public String getManagerName() {
 //        return managerName;

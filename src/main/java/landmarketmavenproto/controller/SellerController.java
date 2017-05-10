@@ -27,11 +27,12 @@ public class SellerController {
 //            sellerMap.get("companyName").toString(),
 //            sellerMap.get("phone").toString(),
 //            sellerMap.get("address").toString(),
-//            sellerMap.get("email").toString(),
+            sellerMap.get("email").toString(),
 //            sellerMap.get("managerName").toString(),
 //            sellerMap.get("skype").toString(),
            sellerMap.get("login").toString(),
-         sellerMap.get("password").toString());
+         sellerMap.get("password").toString()
+        );
 
 
         String login = sellerMap.get("login").toString();
@@ -43,8 +44,8 @@ public class SellerController {
         }
 
         String password = sellerMap.get("password").toString();
-
-        return new ResponseEntity<>(srepository.save(new Seller(login, password)), HttpStatus.OK);
+        String email= sellerMap.get("email").toString();
+        return new ResponseEntity<>(srepository.save(new Seller(login, password, email)), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{sellerId}")
@@ -70,7 +71,7 @@ public class SellerController {
 //            );
         Seller seller = new Seller(
                 sellerMap.get("login").toString(),
-                sellerMap.get("password").toString()
+                sellerMap.get("password").toString(), sellerMap.get("email").toString()
         );
         seller.setId(sellerId);
 //
