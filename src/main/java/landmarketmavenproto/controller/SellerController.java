@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+/**
+ * Created by Nik_NB on 18.03.2017.
+ */
 @RestController
 @RequestMapping("/seller")
 @CrossOrigin
@@ -17,22 +20,8 @@ public class SellerController {
     @Autowired
     SellerRepository srepository;
 
-    private ArrayList<String> logins = new ArrayList<String>();
-    private ArrayList<String> passwords = new ArrayList<String>();
-
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> createSeller(@RequestBody Map<String, Object> sellerMap) {
-    Seller seller = new Seller(
-            //sellerMap.get("passport").toString(),
-//            sellerMap.get("companyName").toString(),
-//            sellerMap.get("phone").toString(),
-//            sellerMap.get("address").toString(),
-//            sellerMap.get("email").toString(),
-//            sellerMap.get("managerName").toString(),
-//            sellerMap.get("skype").toString(),
-           sellerMap.get("login").toString(),
-         sellerMap.get("password").toString());
-
 
         String login = sellerMap.get("login").toString();
 
@@ -43,41 +32,58 @@ public class SellerController {
         }
 
         String password = sellerMap.get("password").toString();
+        String passport = sellerMap.get("passport").toString();
+        String companyName = sellerMap.get("companyName").toString();
+        String phone = sellerMap.get("phone").toString();
+        String address = sellerMap.get("address").toString();
+        String email = sellerMap.get("email").toString();
+        String managerName = sellerMap.get("managerName").toString();
+        String skype = sellerMap.get("skype").toString();
 
-        return new ResponseEntity<>(srepository.save(new Seller(login, password)), HttpStatus.OK);
+        return new ResponseEntity<>(srepository.save(new Seller(login, password, passport, companyName, phone, address, email, managerName, skype)), HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{sellerId}")
-    public ResponseEntity<?> getSellerDetails(@PathVariable(value = "sellerId") String sellerId) {
+//    @RequestMapping(method = RequestMethod.GET, value = "/{sellerId}")
+//    public ResponseEntity<?> getSellerDetails(@PathVariable(value = "sellerId") String sellerId) {
+//
+//        JSONObject response = new JSONObject();
+//        response.put("message", "seller details");
+//        response.put("seller", srepository.findOne(sellerIdll));
+//
+//        return new ResponseEntity<>(response, HttpStatus.OK);
+//    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "{sellerId}")
+    public ResponseEntity<?> getSellerLoginAndPassword(@PathVariable(value = "sellerId") String sellerId){
+
+        Seller seller = srepository.findOne(sellerId);
+        String login = seller.getLogin();
+        String password = seller.getPassword();
+
         JSONObject response = new JSONObject();
-        response.put("message", "seller details");
-        response.put("seller", srepository.findOne(sellerId));
+
+        response.put("message", "seller login and password");
+        response.put("seller's login", login);
+        response.put("seller's password", password);
+
         return new ResponseEntity<>(response, HttpStatus.OK);
-        //return srepository.findOne(sellerId);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{sellerId}")
     public ResponseEntity<?> editSeller(@PathVariable(value = "sellerId") String sellerId, @RequestBody Map<String, Object> sellerMap) {
-//            Seller seller = new Seller(sellerMap.get("passport").toString(),
-//                    sellerMap.get("companyName").toString(),
-//                    sellerMap.get("phone").toString(),
-//                    sellerMap.get("address").toString(),
-//                    sellerMap.get("email").toString(),
-//                    sellerMap.get("managerName").toString(),
-//                    sellerMap.get("skype").toString(),
-//                    sellerMap.get("login").toString(),
-//                    sellerMap.get("password").toString()
-//            );
-        Seller seller = new Seller(
-                sellerMap.get("login").toString(),
-                sellerMap.get("password").toString()
-        );
+
+        String login = sellerMap.get("login").toString();
+        String password = sellerMap.get("password").toString();
+        String passport = sellerMap.get("passport").toString();
+        String companyName = sellerMap.get("companyName").toString();
+        String phone = sellerMap.get("phone").toString();
+        String address = sellerMap.get("address").toString();
+        String email = sellerMap.get("email").toString();
+        String managerName = sellerMap.get("managerName").toString();
+        String skype = sellerMap.get("skype").toString();
+        Seller seller = new Seller(login, password, passport, companyName, phone, address, email, managerName, skype);
+
         seller.setId(sellerId);
-//
-//        Map<String, Object> response = new LinkedHashMap<String, Object>();
-//        response.put("message", "Seller updated successfully");
-//        response.put("seller", srepository.save(seller));
-//        return response;
 
         JSONObject response = new JSONObject();
         response.put("message", "Seller updated successfully");
@@ -87,27 +93,24 @@ public class SellerController {
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{sellerId}")
     public ResponseEntity<?> deleteSeller(@PathVariable(value = "sellerId") String sellerId) {
+
         srepository.delete(sellerId);
+
         JSONObject response = new JSONObject();
         response.put("message", "seller deleted successfully");
+
         return new ResponseEntity<>(response, HttpStatus.OK);
-//        Map<String, Object> response = new HashMap<String, Object>();
-//        response.put("message", "Seller deleted successfully");
-//        return response;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> getAllSellers() {
+
         List<Seller> sellers = srepository.findAll();
+
         JSONObject response = new JSONObject();
         response.put("totalSellers", sellers.size());
         response.put("sellers", sellers);
+
         return new ResponseEntity<>(response, HttpStatus.OK);
-//        Map<String, Object> response = new LinkedHashMap<String, Object>();
-//        response.put("totalSellers", sellers.size());
-//        response.put("sellers", sellers);
-//        return response;
     }
-
-
 }
