@@ -4,9 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-/**
- * Created by Nik_NB on 18.03.2017.
- */
+
 public class Seller {
     @Id
     private String id;
@@ -15,7 +13,7 @@ public class Seller {
 //    private String companyName;
 //    private String phone;
 //    private String address;
-//    private String email;
+ //     private String email;
 //    private String managerName;
 //    private String skype;
     @Field("login")

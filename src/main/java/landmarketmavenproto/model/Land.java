@@ -10,11 +10,16 @@ public class Land {
     private String area;
     private String assignment;
     private String price;
-
+    private String description;
+    private String address;
+    private String owner;
     public Land() {
     }
 
-    public Land(String area, String assignment, String price) {
+    public Land(String owner,String address, String area, String assignment, String price,String description) {
+        this.description = description;
+        this.owner = owner;
+        this.address =  address;
         this.area = area;
         this.assignment = assignment;
         this.price = price;
@@ -48,6 +53,23 @@ public class Land {
     }
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+    public String getDescription(){
+        return description;
+    }
+    public void setDescription(String description){
+        this.description =  description;
+    }
+    public String getAddress( String address){
+        return address;
     }
 }
 
