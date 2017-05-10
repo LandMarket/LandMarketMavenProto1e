@@ -35,9 +35,10 @@ public class LandController {
 //        return response;
         String area = landMap.get("area").toString();
         String assignment = landMap.get("assignment").toString();
+        String price = landMap.get("price").toString();
         //JSONObject response = new JSONObject();
         //response.put("message", "land created successfully");
-        return new ResponseEntity<>(lrepository.save(new Land(area, assignment)), HttpStatus.OK);
+        return new ResponseEntity<>(lrepository.save(new Land(area, assignment, price)), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{landId}")
@@ -49,7 +50,7 @@ public class LandController {
     @RequestMapping(method = RequestMethod.PUT, value = "/{landId}")
     public ResponseEntity<?> editLand(@PathVariable("landId") String landId, @RequestBody Map<String, Object> landMap){
         Land land = new Land(landMap.get("area").toString(),
-                landMap.get("assignment").toString());
+                landMap.get("assignment").toString(),  landMap.get("price").toString());
         land.setId(landId);
 
 //        Map<String, Object> response = new LinkedHashMap<String, Object>();

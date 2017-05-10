@@ -2,22 +2,22 @@ package landmarketmavenproto.model;
 
 import org.springframework.data.annotation.Id;
 
-/**
- * Created by Nik_NB on 19.03.2017.
- */
+
 public class Land {
     @Id
     private String id;
 
     private String area;
     private String assignment;
+    private String price;
 
     public Land() {
     }
 
-    public Land(String area, String assignment) {
+    public Land(String area, String assignment, String price) {
         this.area = area;
         this.assignment = assignment;
+        this.price = price;
     }
 
     public String getId() {
@@ -43,4 +43,11 @@ public class Land {
     public void setAssignment(String assignment) {
         this.assignment = assignment;
     }
+    public String getPrice(){
+        return price;
+    }
+    public void setPrice(String price) {
+        this.price = price;
+    }
 }
+
