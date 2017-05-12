@@ -37,7 +37,7 @@ public class SellerController {
 //        String companyName = sellerMap.get("companyName").toString();
 //        String phone = sellerMap.get("phone").toString();
 //        String address = sellerMap.get("address").toString();
-        String email = sellerMap.get("email").toString();
+          String email = sellerMap.get("email").toString();
 //        String managerName = sellerMap.get("managerName").toString();
 //        String skype = sellerMap.get("skype").toString();
 
@@ -60,12 +60,14 @@ public class SellerController {
         Seller seller = srepository.findOne(sellerId);
         String login = seller.getLogin();
         String password = seller.getPassword();
+        String email =  seller.getEmail();
 
         JSONObject response = new JSONObject();
 
-        response.put("message", "seller login and password");
+        response.put("message", "seller login and password and email");
         response.put("seller's login", login);
         response.put("seller's password", password);
+        response.put("seller's email", email);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
