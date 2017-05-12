@@ -12,24 +12,24 @@ public class Seller {
     private String id;
 
 
-    @Field("login")
-    @Indexed(unique = true)
+    //@Field("login")
+    //@Indexed(unique = true)
     private String login;
-    @Field("password")
+    //@Field("password")
     private String password;
-    @Field("passport")
+    //@Field("passport")
     private String passport;
-    @Field("companyName")
+    //@Field("companyName")
     private String companyName;
-    @Field("phone")
+    //@Field("phone")
     private String phone;
-    @Field("address")
+    //@Field("address")
     private String address;
-    @Field("email")
+    //@Field("email")
     private String email;
-    @Field("managerName")
+    //@Field("managerName")
     private String managerName;
-    @Field("skype")
+    //@Field("skype")
     private String skype;
 
     public Seller() {
