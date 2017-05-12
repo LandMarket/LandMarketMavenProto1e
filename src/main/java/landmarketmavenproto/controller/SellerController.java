@@ -73,16 +73,16 @@ public class SellerController {
     @RequestMapping(method = RequestMethod.PUT, value = "/{sellerId}")
     public ResponseEntity<?> editSeller(@PathVariable(value = "sellerId") String sellerId, @RequestBody Map<String, Object> sellerMap) {
 
-        String login = sellerMap.get("login").toString();
-        String password = sellerMap.get("password").toString();
-        String passport = sellerMap.get("passport").toString();
-        String companyName = sellerMap.get("companyName").toString();
-        String phone = sellerMap.get("phone").toString();
-        String address = sellerMap.get("address").toString();
-        String email = sellerMap.get("email").toString();
-        String managerName = sellerMap.get("managerName").toString();
-        String skype = sellerMap.get("skype").toString();
-        Seller seller = new Seller(login, password, passport, companyName, phone, address, email, managerName, skype);
+        Seller seller = new  Seller(sellerMap.get("login").toString(),
+                sellerMap.get("password").toString(),
+                sellerMap.get("passport").toString(),
+                sellerMap.get("companyName").toString(),
+                sellerMap.get("phone").toString(),
+                sellerMap.get("address").toString(),
+                sellerMap.get("email").toString(),
+                sellerMap.get("managerName").toString(),
+                sellerMap.get("skype").toString());
+//        Seller seller = new Seller(login, password, passport, companyName, phone, address, email, managerName, skype);
 
         seller.setId(sellerId);
 
