@@ -26,6 +26,7 @@ public class Seller {
 //    @Field("address")
 //    private String address;
 //    @Field("email")
+      @Field("email")
       private String email;
 //    @Field("managerName")
 //    private String managerName;
