@@ -35,12 +35,12 @@ public class Seller {
     public Seller() {
     }
 
-    public Seller(String login, String password, String passport, String email) {
+    public Seller(String login, String password/* String passport, String email*/) {
         this.login = login;
         this.password = password;
-        this.passport = passport;
+        //this.passport = passport;
        // this.companyName = companyName;
-        this.email = email;
+       // this.email = email;
 //        this.managerName = managerName;
 //        this.skype = skype;
 //        this.login = login;
@@ -52,21 +52,21 @@ public class Seller {
 //        this.password = password;
 //    }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getPassport() {
-        return passport;
-    }
-
-    public void setPassport(String passport) {
-        this.passport = passport;
-    }
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public void setId(String id) {
+//        this.id = id;
+//    }
+//
+//    public String getPassport() {
+//        return passport;
+//    }
+//
+//    public void setPassport(String passport) {
+//        this.passport = passport;
+//    }
 
 //    public String getCompanyName() {
 //        return companyName;
@@ -92,13 +92,13 @@ public class Seller {
 //        this.address = address;
 //    }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 
 //    public String getManagerName() {
 //        return managerName;
