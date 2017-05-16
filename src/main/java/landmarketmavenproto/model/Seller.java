@@ -17,8 +17,8 @@ public class Seller {
     private String login;
     @Field("password")
     private String password;
-    @Field("passport")
-    private String passport;
+    @Field("confirm")
+    private String confirm;
     //@Field("companyName")
   //  private String companyName;
     //@Field("phone")
@@ -35,10 +35,10 @@ public class Seller {
     public Seller() {
     }
 
-    public Seller(String login, String password, String passport, String email) {
+    public Seller(String login,String email, String password, String confirm) {
         this.login = login;
         this.password = password;
-        this.passport = passport;
+        this.confirm = confirm;
        // this.companyName = companyName;
         this.email = email;
 //        this.managerName = managerName;
@@ -59,12 +59,12 @@ public class Seller {
         this.id = id;
     }
 
-    public String getPassport() {
-        return passport;
+    public String getConfirm() {
+        return confirm;
     }
 
-    public void setPassport(String passport) {
-        this.passport = passport;
+    public void setConfirm(String confirm) {
+        this.confirm = confirm;
     }
 
 //    public String getCompanyName() {
