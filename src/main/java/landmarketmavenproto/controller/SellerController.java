@@ -33,13 +33,10 @@ public class SellerController {
         }
 
         String password = sellerMap.get("password").toString();
-       // String passport = sellerMap.get("passport").toString();
-//        String companyName = sellerMap.get("companyName").toString();
-//        String phone = sellerMap.get("phone").toString();
-//        String address = sellerMap.get("address").toString();
-//        String email = sellerMap.get("email").toString();
+        String passport = sellerMap.get("passport").toString();
+        String email = sellerMap.get("email").toString();
 
-        return new ResponseEntity<>(srepository.save(new Seller(login, password)), HttpStatus.OK);
+        return new ResponseEntity<>(srepository.save(new Seller(login, password, passport, email)), HttpStatus.OK);
     }
 
 //    @RequestMapping(method = RequestMethod.GET, value = "/{sellerId}")
@@ -72,9 +69,9 @@ public class SellerController {
     public ResponseEntity<?> editSeller(@PathVariable(value = "sellerId") String sellerId, @RequestBody Map<String, Object> sellerMap) {
 
         Seller seller = new  Seller(sellerMap.get("login").toString(),
-                sellerMap.get("password").toString());
-//                sellerMap.get("passport").toString(),
-//                sellerMap.get("email").toString());
+                sellerMap.get("password").toString(),
+                sellerMap.get("passport").toString(),
+                sellerMap.get("email").toString());
 //        Seller seller = new Seller(login, password, passport, companyName, phone, address, email, managerName, skype);
 
         seller.setId(sellerId);

@@ -17,16 +17,16 @@ public class Seller {
     private String login;
     @Field("password")
     private String password;
-    //@Field("passport")
-    //private String passport;
+    @Field("passport")
+    private String passport;
     //@Field("companyName")
   //  private String companyName;
     //@Field("phone")
    // private String phone;
     //@Field("address")
    // private String address;
-    //@Field("email")
-   // private String email;
+    @Field("email")
+    private String email;
     //@Field("managerName")
     //private String managerName;
     //@Field("skype")
@@ -35,15 +35,14 @@ public class Seller {
     public Seller() {
     }
 
-    public Seller(String login, String password) {
+    public Seller(String login, String password, String passport, String email) {
         this.login = login;
         this.password = password;
-      //  this.passport = passport;
+        this.passport = passport;
        // this.companyName = companyName;
-       // this.email = email;
+        this.email = email;
 //        this.managerName = managerName;
 //        this.skype = skype;
-//        this.login = login;
 //        this.password = password;
     }
 
@@ -60,13 +59,13 @@ public class Seller {
         this.id = id;
     }
 
-//    public String getPassport() {
-//        return passport;
-//    }
-//
-//    public void setPassport(String passport) {
-//        this.passport = passport;
-//    }
+    public String getPassport() {
+        return passport;
+    }
+
+    public void setPassport(String passport) {
+        this.passport = passport;
+    }
 
 //    public String getCompanyName() {
 //        return companyName;
@@ -92,13 +91,13 @@ public class Seller {
 //        this.address = address;
 //    }
 
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
 //    public String getManagerName() {
 //        return managerName;
