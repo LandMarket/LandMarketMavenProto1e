@@ -25,6 +25,9 @@ public class SellerController {
     public ResponseEntity<?> createSeller(@RequestBody Map<String, Object> sellerMap) {
 
         String login = sellerMap.get("login").toString();
+        String email = sellerMap.get("email").toString();
+        String password = sellerMap.get("password").toString();
+        String confirm = sellerMap.get("confirm").toString();
 
         if((srepository.findByLogin(login)) != null) {
             JSONObject response = new JSONObject();
@@ -32,22 +35,11 @@ public class SellerController {
             return new ResponseEntity<>(response, HttpStatus.CONFLICT);
         }
 
-        String password = sellerMap.get("password").toString();
-        String passport = sellerMap.get("passport").toString();
-        String email = sellerMap.get("email").toString();
 
-        return new ResponseEntity<>(srepository.save(new Seller(login, password, passport, email)), HttpStatus.OK);
+
+        return new ResponseEntity<>(srepository.save(new Seller(login,email, password, confirm)), HttpStatus.OK);
     }
 
-//    @RequestMapping(method = RequestMethod.GET, value = "/{sellerId}")
-//    public ResponseEntity<?> getSellerDetails(@PathVariable(value = "sellerId") String sellerId) {
-//
-//        JSONObject response = new JSONObject();
-//        response.put("message", "seller details");
-//        response.put("seller", srepository.findOne(sellerIdll));
-//
-//        return new ResponseEntity<>(response, HttpStatus.OK);
-//    }
 
     @RequestMapping(method = RequestMethod.GET, value = "{sellerId}")
     public ResponseEntity<?> getSellerLoginAndPassword(@PathVariable(value = "sellerId") String sellerId){
@@ -68,16 +60,10 @@ public class SellerController {
     @RequestMapping(method = RequestMethod.PUT, value = "/{sellerId}")
     public ResponseEntity<?> editSeller(@PathVariable(value = "sellerId") String sellerId, @RequestBody Map<String, Object> sellerMap) {
 
-//        Seller seller = new  Seller(sellerMap.get("login").toString(),
-//                sellerMap.get("password").toString(),
-//                sellerMap.get("passport").toString(),
-//                sellerMap.get("email").toString());
-        String password = sellerMap.get("Password").toString();
-        String passport = sellerMap.get("Passport").toString();
-        String email = sellerMap.get("Email").toString();
-        String login = sellerMap.get("Login").toString();
-        Seller seller = new Seller(login, password, passport, email);
-
+        Seller seller = new  Seller(sellerMap.get("login").toString(),
+                sellerMap.get("email").toString(),
+                sellerMap.get("password").toString(),
+                sellerMap.get("confirm").toString());
         seller.setId(sellerId);
 
         JSONObject response = new JSONObject();
