@@ -12,10 +12,10 @@ public class Seller {
     private String id;
 
 
-    //@Field("login")
-    //@Indexed(unique = true)
+    @Field("login")
+    @Indexed(unique = true)
     private String login;
-    //@Field("password")
+    @Field("password")
     private String password;
     //@Field("passport")
     //private String passport;
