@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * Created by Nik_NB on 18.03.2017.
+ */
 @RestController
 @RequestMapping("/seller")
 @CrossOrigin
@@ -30,12 +32,11 @@ public class SellerController {
             return new ResponseEntity<>(response, HttpStatus.CONFLICT);
         }
 
-        String email = sellerMap.get("email").toString();
         String password = sellerMap.get("password").toString();
-        String confirm = sellerMap.get("confirm").toString();
+        String passport = sellerMap.get("passport").toString();
+        String email = sellerMap.get("email").toString();
 
-
-        return new ResponseEntity<>(srepository.save(new Seller(login,email,password,confirm)), HttpStatus.OK);
+        return new ResponseEntity<>(srepository.save(new Seller(login, password, passport, email)), HttpStatus.OK);
     }
 
 //    @RequestMapping(method = RequestMethod.GET, value = "/{sellerId}")
@@ -72,10 +73,10 @@ public class SellerController {
 //                sellerMap.get("passport").toString(),
 //                sellerMap.get("email").toString());
         String password = sellerMap.get("Password").toString();
-        String confirm = sellerMap.get("Confirm").toString();
+        String passport = sellerMap.get("Passport").toString();
         String email = sellerMap.get("Email").toString();
         String login = sellerMap.get("Login").toString();
-        Seller seller = new Seller(login,email, password, confirm);
+        Seller seller = new Seller(login, password, passport, email);
 
         seller.setId(sellerId);
 
