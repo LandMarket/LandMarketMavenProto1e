@@ -30,9 +30,10 @@ public class SellerController {
             return new ResponseEntity<>(response, HttpStatus.CONFLICT);
         }
 
+        String email = sellerMap.get("email").toString();
         String password = sellerMap.get("password").toString();
         String confirm = sellerMap.get("confirm").toString();
-        String email = sellerMap.get("email").toString();
+
 
         return new ResponseEntity<>(srepository.save(new Seller(login,email,password,confirm)), HttpStatus.OK);
     }
