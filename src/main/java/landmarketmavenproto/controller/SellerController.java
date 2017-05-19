@@ -29,6 +29,7 @@ public class SellerController {
         String password = sellerMap.get("password").toString();
         String confirm = sellerMap.get("confirm").toString();
 
+
 //        if((srepository.findByLogin(login)) != null) {
 //            JSONObject response = new JSONObject();
 //            response.put("message", "Login already exists");
