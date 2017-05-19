@@ -16,7 +16,7 @@ public class Seller {
     private String login;
     //@Field("password")
     private String password;
-    private String confirm;
+  //  private String confirm;
     //@Field("email")
     //private String email;
     //@Field("confirm")
@@ -54,12 +54,12 @@ public class Seller {
 //        this.password = password;
 //    }
 
-    public Seller(String login, String password, String email, String confirm) {
+    public Seller(String login, String password, String email) {
 
         this.login = login;
         this.password = password;
         this.email = email;
-        this.confirm = confirm;
+      //  this.confirm = confirm;
     }
 
 
@@ -148,11 +148,11 @@ public class Seller {
         this.password = password;
     }
 
-    public String getConfirm() {
-        return confirm;
-    }
-
-    public void setConfirm(String confirm) {
-        this.confirm = confirm;
-    }
+//    public String getConfirm() {
+//        return confirm;
+//    }
+//
+//    public void setConfirm(String confirm) {
+//        this.confirm = confirm;
+//    }
 }
