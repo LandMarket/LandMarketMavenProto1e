@@ -31,7 +31,7 @@ public class LandController {
         String address = landMap.get("address").toString();
         String owner = landMap.get("owner").toString();
 
-        sellerLands.add(new Land(area, assignment, price, description, address, owner));
+
         return new ResponseEntity<>(lrepository.save(new Land(area, assignment, price, description, address, owner)), HttpStatus.OK);
     }
 
