@@ -8,9 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Map;
-
 /**
  * Created by Nik_NB on 18.03.2017.
  */
@@ -33,15 +30,17 @@ public class SellerController {
         }
 
         String password = sellerMap.get("password").toString();
-        String passport = sellerMap.get("passport").toString();
-        String companyName = sellerMap.get("companyName").toString();
-        String phone = sellerMap.get("phone").toString();
-        String address = sellerMap.get("address").toString();
         String email = sellerMap.get("email").toString();
-        String managerName = sellerMap.get("managerName").toString();
-        String skype = sellerMap.get("skype").toString();
-
-        return new ResponseEntity<>(srepository.save(new Seller(login, password, passport, companyName, phone, address, email, managerName, skype)), HttpStatus.OK);
+        String confirm = sellerMap.get("confirm").toString();
+//        String passport = sellerMap.get("passport").toString();
+//        String companyName = sellerMap.get("companyName").toString();
+//        String phone = sellerMap.get("phone").toString();
+//        String address = sellerMap.get("address").toString();
+//
+//        String managerName = sellerMap.get("managerName").toString();
+//        String skype = sellerMap.get("skype").toString();
+        return new ResponseEntity<>(srepository.save(new Seller(login, password,  email,confirm)), HttpStatus.OK);
+//        return new ResponseEntity<>(srepository.save(new Seller(login, password, passport, companyName, phone, address, email, managerName, skype)), HttpStatus.OK);
     }
 
 //    @RequestMapping(method = RequestMethod.GET, value = "/{sellerId}")
@@ -75,15 +74,17 @@ public class SellerController {
 
         String login = sellerMap.get("login").toString();
         String password = sellerMap.get("password").toString();
-        String passport = sellerMap.get("passport").toString();
-        String companyName = sellerMap.get("companyName").toString();
-        String phone = sellerMap.get("phone").toString();
-        String address = sellerMap.get("address").toString();
         String email = sellerMap.get("email").toString();
-        String managerName = sellerMap.get("managerName").toString();
-        String skype = sellerMap.get("skype").toString();
-        Seller seller = new Seller(login, password, passport, companyName, phone, address, email, managerName, skype);
-
+        String confirm = sellerMap.get("confirm").toString();
+//        String passport = sellerMap.get("passport").toString();
+//        String companyName = sellerMap.get("companyName").toString();
+//        String phone = sellerMap.get("phone").toString();
+//        String address = sellerMap.get("address").toString();
+//        String email = sellerMap.get("email").toString();
+//        String managerName = sellerMap.get("managerName").toString();
+//        String skype = sellerMap.get("skype").toString();
+//        Seller seller = new Seller(login, password, passport, companyName, phone, address, email, managerName, skype);
+        Seller seller = new Seller(login, password,  email, confirm);
         seller.setId(sellerId);
 
         JSONObject response = new JSONObject();
