@@ -31,9 +31,7 @@ public class LandController {
         String description = landMap.get("description").toString();
         String address = landMap.get("address").toString();
         String owner = landMap.get("owner").toString();
-        Seller seller = new Seller();
-        seller.getLogin();
-        ArrayList<Land> sellerLands = new ArrayList<>();
+
         sellerLands.add(new Land(area, assignment, price, description, address, owner));
         return new ResponseEntity<>(lrepository.save(new Land(area, assignment, price, description, address, owner)), HttpStatus.OK);
     }
