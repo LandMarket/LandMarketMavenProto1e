@@ -54,6 +54,7 @@ public class Seller {
 //    }
 
     public Seller(String login, String password, String email, String confirm) {
+
         this.login = login;
         this.password = password;
         this.email = email;
