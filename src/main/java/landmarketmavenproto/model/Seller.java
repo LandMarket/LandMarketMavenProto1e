@@ -11,15 +11,13 @@ public class Seller {
     @Id
     private String id;
 
-
-    @Field("login")
-    @Indexed(unique = true)
+//    @Field("login")
+//    @Indexed(unique = true)
     private String login;
-    @Field("password")
     private String password;
-    @Field("confirm")
+//    @Field("confirm")
     private String confirm;
-    @Field("email")
+   //  @Field("email")
     private String email;
 
 

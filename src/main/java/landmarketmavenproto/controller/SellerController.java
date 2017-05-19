@@ -35,8 +35,6 @@ public class SellerController {
 //            return new ResponseEntity<>(response, HttpStatus.CONFLICT);
 //        }
 
-
-
         return new ResponseEntity<>(srepository.save(new Seller(login,email, password, confirm)), HttpStatus.OK);
     }
 
@@ -61,14 +59,15 @@ public class SellerController {
     public ResponseEntity<?> editSeller(@PathVariable(value = "sellerId") String sellerId, @RequestBody Map<String, Object> sellerMap) {
 
         Seller seller = new  Seller(sellerMap.get("login").toString(),
-                sellerMap.get("email").toString(),
-                sellerMap.get("password").toString(),
-                sellerMap.get("confirm").toString());
+                             sellerMap.get("email").toString(),
+                             sellerMap.get("password").toString(),
+                             sellerMap.get("confirm").toString());
         seller.setId(sellerId);
 
         JSONObject response = new JSONObject();
         response.put("message", "Seller updated successfully");
         response.put("seller", srepository.save(seller));
+
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
