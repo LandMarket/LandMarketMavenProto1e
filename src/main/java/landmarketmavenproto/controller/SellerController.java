@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by Nik_NB on 18.03.2017.
  */
@@ -22,36 +25,20 @@ public class SellerController {
     public ResponseEntity<?> createSeller(@RequestBody Map<String, Object> sellerMap) {
 
         String login = sellerMap.get("login").toString();
-
-        if((srepository.findByLogin(login)) != null) {
-            JSONObject response = new JSONObject();
-            response.put("message", "Login already exists");
-            return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-        }
-
-        String password = sellerMap.get("password").toString();
-
-        //String confirm = sellerMap.get("confirm").toString();
-        String passport = sellerMap.get("passport").toString();
-        String companyName = sellerMap.get("companyName").toString();
-        String phone = sellerMap.get("phone").toString();
-        String address = sellerMap.get("address").toString();
         String email = sellerMap.get("email").toString();
-        String managerName = sellerMap.get("managerName").toString();
-        String skype = sellerMap.get("skype").toString();
-        //return new ResponseEntity<>(srepository.save(new Seller(login, password,  email,confirm)), HttpStatus.OK);
-        return new ResponseEntity<>(srepository.save(new Seller(login, password, passport, companyName, phone, address, email, managerName, skype)), HttpStatus.OK);
+        String password = sellerMap.get("password").toString();
+       // String confirm = sellerMap.get("confirm").toString();
+
+
+//        if((srepository.findByLogin(login)) != null) {
+//            JSONObject response = new JSONObject();
+//            response.put("message", "Login already exists");
+//            return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+//        }
+
+        return new ResponseEntity<>(srepository.save(new Seller(login,email, password)), HttpStatus.OK);
     }
 
-//    @RequestMapping(method = RequestMethod.GET, value = "/{sellerId}")
-//    public ResponseEntity<?> getSellerDetails(@PathVariable(value = "sellerId") String sellerId) {
-//
-//        JSONObject response = new JSONObject();
-//        response.put("message", "seller details");
-//        response.put("seller", srepository.findOne(sellerIdll));
-//
-//        return new ResponseEntity<>(response, HttpStatus.OK);
-//    }
 
     @RequestMapping(method = RequestMethod.GET, value = "{sellerId}")
     public ResponseEntity<?> getSellerLoginAndPassword(@PathVariable(value = "sellerId") String sellerId){
@@ -72,24 +59,15 @@ public class SellerController {
     @RequestMapping(method = RequestMethod.PUT, value = "/{sellerId}")
     public ResponseEntity<?> editSeller(@PathVariable(value = "sellerId") String sellerId, @RequestBody Map<String, Object> sellerMap) {
 
-        String login = sellerMap.get("login").toString();
-        String password = sellerMap.get("password").toString();
-        String email = sellerMap.get("email").toString();
-        String confirm = sellerMap.get("confirm").toString();
-        String passport = sellerMap.get("passport").toString();
-        String companyName = sellerMap.get("companyName").toString();
-        String phone = sellerMap.get("phone").toString();
-        String address = sellerMap.get("address").toString();
-        String email = sellerMap.get("email").toString();
-        String managerName = sellerMap.get("managerName").toString();
-        String skype = sellerMap.get("skype").toString();
-        Seller seller = new Seller(login, password, passport, companyName, phone, address, email, managerName, skype);
-       // Seller seller = new Seller(login, password,  email, confirm);
+        Seller seller = new  Seller(sellerMap.get("login").toString(),
+                             sellerMap.get("email").toString(),
+                             sellerMap.get("password").toString());
         seller.setId(sellerId);
 
         JSONObject response = new JSONObject();
         response.put("message", "Seller updated successfully");
         response.put("seller", srepository.save(seller));
+
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
