@@ -1,6 +1,7 @@
 package landmarketmavenproto.controller;
 
 import landmarketmavenproto.model.Land;
+import landmarketmavenproto.model.Seller;
 import landmarketmavenproto.repository.LandRepository;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +31,10 @@ public class LandController {
         String description = landMap.get("description").toString();
         String address = landMap.get("address").toString();
         String owner = landMap.get("owner").toString();
-
+        Seller seller = new Seller();
+        seller.getLogin();
+        ArrayList<Land> sellerLands = new ArrayList<>();
+        sellerLands.add(new Land(area, assignment, price, description, address, owner));
         return new ResponseEntity<>(lrepository.save(new Land(area, assignment, price, description, address, owner)), HttpStatus.OK);
     }
 
@@ -73,6 +78,7 @@ public class LandController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
+
     public ResponseEntity<?> getAllLand(){
 
         List<Land> lands = lrepository.findAll();
