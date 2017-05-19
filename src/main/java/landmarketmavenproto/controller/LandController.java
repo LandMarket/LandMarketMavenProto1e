@@ -23,6 +23,7 @@ public class LandController {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> createLand(@RequestBody Map<String, Object> landMap){
 
+
         String area = landMap.get("area").toString();
         String assignment = landMap.get("assignment").toString();
         String price = landMap.get("price").toString();
