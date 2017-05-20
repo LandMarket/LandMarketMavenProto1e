@@ -30,13 +30,13 @@ public class SellerController {
        // String confirm = sellerMap.get("confirm").toString();
 
 
-//        if((srepository.findByLogin(login)) != null) {
-//            JSONObject response = new JSONObject();
-//            response.put("message", "Login already exists");
-//            return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-//        }
+        if((srepository.findByLogin(login)) != null) {
+            JSONObject response = new JSONObject();
+            response.put("message", "Login already exists");
+            return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+        }
 
-        return new ResponseEntity<>(srepository.save(new Seller(login,email, password)), HttpStatus.OK);
+        return new ResponseEntity<>(srepository.save(new Seller(login,email,password)), HttpStatus.OK);
     }
 
 
