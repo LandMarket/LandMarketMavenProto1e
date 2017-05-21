@@ -6,19 +6,15 @@ import org.springframework.data.annotation.Id;
  * Created by Nik_NB on 19.03.2017.
  */
 public class Land {
-    //@Id
-    //private String id;
-
     @Id
-    private String owner;
+    private String id;
 
     private String area;
     private String assignment;
     private String price;
     private String description;
     private String address;
-
-
+    private String owner;
 
 
     public Land() {
@@ -33,13 +29,13 @@ public class Land {
         this.owner = owner;
     }
 
-//    public String getId() {
-//        return id;
-//    }
-//
-//    public void setId(String id) {
-//        this.id = id;
-//    }
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getArea() {
         return area;
