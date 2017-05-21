@@ -92,5 +92,6 @@ public class SellerController {
         response.put("sellers", sellers);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
+
     }
 }
