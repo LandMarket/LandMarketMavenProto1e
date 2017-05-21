@@ -42,6 +42,7 @@ public class SellerController {
 
     @RequestMapping(method = RequestMethod.GET, value = "{sellerId}")
     public ResponseEntity<?> getSellerLoginAndPassword(@PathVariable(value = "sellerId") String sellerId){
+
         Seller seller = srepository.findOne(sellerId);
         String login = seller.getLogin();
         String password = seller.getPassword();
@@ -59,8 +60,8 @@ public class SellerController {
     public ResponseEntity<?> editSeller(@PathVariable(value = "sellerId") String sellerId, @RequestBody Map<String, Object> sellerMap) {
 
         Seller seller = new  Seller(sellerMap.get("login").toString(),
-                             sellerMap.get("email").toString(),
-                             sellerMap.get("password").toString(), sellerMap.get("confirm").toString());
+                             sellerMap.get("email").toString(),sellerMap.get("password").toString(),
+                             sellerMap.get("confirm").toString());
         seller.setId(sellerId);
 
         JSONObject response = new JSONObject();
