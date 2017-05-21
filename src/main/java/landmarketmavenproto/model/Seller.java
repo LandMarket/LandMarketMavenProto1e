@@ -12,9 +12,10 @@ public class Seller {
     //@Field("login")
     //@Indexed(unique = true)
     private String login;
+    private String email;
     //@Field("password")
     private String password;
-  //  private String confirm;
+    private String confirm;
     //@Field("email")
     //private String email;
     //@Field("confirm")
@@ -28,7 +29,7 @@ public class Seller {
 //   //@Field("address")
 //    private String address;
     //@Field("email")
-    private String email;
+
     //@Field("managerName")
 //    private String managerName;
 //    //@Field("skype")
@@ -57,7 +58,7 @@ public class Seller {
         this.login = login;
         this.password = password;
         this.email = email;
-      //  this.confirm = confirm;
+        this.confirm = confirm;
     }
 
 
@@ -146,11 +147,11 @@ public class Seller {
         this.password = password;
     }
 
-//    public String getConfirm() {
-//        return confirm;
-//    }
-//
-//    public void setConfirm(String confirm) {
-//        this.confirm = confirm;
-//    }
+    public String getConfirm() {
+        return confirm;
+    }
+
+    public void setConfirm(String confirm) {
+        this.confirm = confirm;
+    }
 }
