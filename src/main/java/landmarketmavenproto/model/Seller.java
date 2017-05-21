@@ -53,7 +53,7 @@ public class Seller {
 //        this.password = password;
 //    }
 
-    public Seller(String login, String password, String email) {
+    public Seller(String login, String password, String email, String confirm) {
 
         this.login = login;
         this.password = password;
