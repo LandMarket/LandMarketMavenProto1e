@@ -16,7 +16,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/seller")
-@CrossOrigin
+//@CrossOrigin
 public class SellerController {
     @Autowired
     SellerRepository srepository;
