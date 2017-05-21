@@ -32,7 +32,29 @@ public class LandController {
         String owner = landMap.get("owner").toString();
 
 
+
         return new ResponseEntity<>(lrepository.save(new Land(area, assignment, price, description, address, owner)), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/{owner}")
+    public ResponseEntity<?> createLand(@RequestBody Map<String, Object> landMap){
+
+
+        String area = landMap.get("area").toString();
+        String assignment = landMap.get("assignment").toString();
+        String price = landMap.get("price").toString();
+        String description = landMap.get("description").toString();
+        String address = landMap.get("address").toString();
+        //String owner = landMap.get("owner").toString();
+        ArrayList<Land> lands = new ArrayList<>();
+        lands.add("area");
+        lands.add("assingment");
+        lands.add("price");
+        lands.add("description");
+        lands.add("address");
+
+
+        return new ResponseEntity<>(lrepository.save(new Land(area, assignment, price, description, address)), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{landId}")
