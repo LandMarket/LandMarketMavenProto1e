@@ -53,11 +53,11 @@ public class Seller {
 //        this.password = password;
 //    }
 
-    public Seller(String login, String password, String email, String confirm) {
+    public Seller(String login, String email, String password,  String confirm) {
 
         this.login = login;
-        this.password = password;
         this.email = email;
+        this.password = password;
         this.confirm = confirm;
     }
 
@@ -107,13 +107,7 @@ public class Seller {
 //        this.address = address;
 //    }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
 //    public String getManagerName() {
 //        return managerName;
@@ -137,6 +131,14 @@ public class Seller {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
