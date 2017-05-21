@@ -27,6 +27,7 @@ public class SellerController {
         String login = sellerMap.get("login").toString();
         String email = sellerMap.get("email").toString();
         String password = sellerMap.get("password").toString();
+
        // String confirm = sellerMap.get("confirm").toString();
 
 
