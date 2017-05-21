@@ -46,15 +46,12 @@ public class LandController {
         String description = landMap.get("description").toString();
         String address = landMap.get("address").toString();
         //String owner = landMap.get("owner").toString();
+        Land land = new Land(area, assingment, price, description, address);
         ArrayList<Land> lands = new ArrayList<>();
-        lands.add("area");
-        lands.add("assingment");
-        lands.add("price");
-        lands.add("description");
-        lands.add("address");
+        lands.add(land);
 
 
-        return new ResponseEntity<>(lrepository.save(new Land(area, assignment, price, description, address)), HttpStatus.OK);
+        return new ResponseEntity<>(lrepository.save(lands), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{landId}")
@@ -75,8 +72,8 @@ public class LandController {
                 landMap.get("price").toString(),
                 landMap.get("description").toString(),
                 landMap.get("address").toString(),
-                landMap.get("owner").toString());
-        land.setId(landId);
+//                landMap.get("owner").toString());
+//        land.setId(landId);
 
         JSONObject response = new JSONObject();
         response.put("message", "land updated successfully");
