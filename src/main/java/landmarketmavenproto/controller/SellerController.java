@@ -40,8 +40,8 @@ public class SellerController {
     }
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "{sellerId}")
-    public ResponseEntity<?> getSellerLoginAndPassword(@PathVariable(value = "sellerId") String sellerId){
+    @RequestMapping(method = RequestMethod.GET, value = "{login}")
+    public ResponseEntity<?> getSellerLoginAndPassword(@PathVariable(value = "login") String sellerId){
 
         Seller seller = srepository.findOne(sellerId);
         String login = seller.getLogin();
