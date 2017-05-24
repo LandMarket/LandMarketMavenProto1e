@@ -8,5 +8,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface SellerRepository extends MongoRepository<Seller, String> {
     Seller findOne(final String sellerId);
+    //String findlogin(final String sellerlogin);
     Seller findByLogin(final String login);
 }
