@@ -57,9 +57,9 @@ public class SellerController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/login")
-    public ResponseEntity<?> login(@PathVariable(value = "login") String login, String password) {
+    public ResponseEntity<?> loginshow(@PathVariable(value = "login") String login, String password) {
 
-        if (login != null) {
+        if (login.equals(login != null && password!= null)){
             JSONObject response = new JSONObject();
             response.put("seller's login", login);
             response.put("seller's login", password);
