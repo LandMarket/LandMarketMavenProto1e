@@ -41,7 +41,7 @@ public class SellerController {
 
 
     @RequestMapping(method = RequestMethod.GET, value = "/login")
-    public ResponseEntity<?> getSellerLoginAndPassword(@PathVariable(value = "login") String login) {
+    public ResponseEntity<?> getSellerLoginAndPassword(@PathVariable(value = "sellerlogin") String login) {
 
         Seller seller = srepository.findOne(login);
         JSONObject response = new JSONObject();
@@ -49,14 +49,11 @@ public class SellerController {
             login = seller.getLogin();
             String password = seller.getPassword();
 
-
             response.put("message", "seller login and password");
             response.put("seller's login", login);
             response.put("seller's password", password);
         }
-
             return new ResponseEntity<>(response, HttpStatus.OK);
-
     }
 
 //    @RequestMapping(method = RequestMethod.GET, value = "/login")
