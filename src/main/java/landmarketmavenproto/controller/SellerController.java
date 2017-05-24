@@ -27,21 +27,21 @@ public class SellerController {
         String login = sellerMap.get("login").toString();
         String email = sellerMap.get("email").toString();
         String password = sellerMap.get("password").toString();
-         String confirm = sellerMap.get("confirm").toString();
+        String confirm = sellerMap.get("confirm").toString();
 
 
-        if((srepository.findByLogin(login)) != null) {
+        if ((srepository.findByLogin(login)) != null) {
             JSONObject response = new JSONObject();
             response.put("message", "Login already exists");
             return new ResponseEntity<>(response, HttpStatus.CONFLICT);
         }
 
-        return new ResponseEntity<>(srepository.save(new Seller(login,email,password,confirm)), HttpStatus.OK);
+        return new ResponseEntity<>(srepository.save(new Seller(login, email, password, confirm)), HttpStatus.OK);
     }
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{login}")
-    public ResponseEntity<?> getSellerLoginAndPassword(@PathVariable(value = "login") String sellerId){
+    @RequestMapping(method = RequestMethod.GET, value = "/{sellerId}")
+    public ResponseEntity<?> getSellerLoginAndPassword(@PathVariable(value = "sellerId") String sellerId) {
 
         Seller seller = srepository.findOne(sellerId);
         String login = seller.getLogin();
@@ -54,6 +54,19 @@ public class SellerController {
         response.put("seller's password", password);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/login")
+    public ResponseEntity<?> login(@PathVariable(value = "login") String login, String password) {
+
+        if (login != null) {
+            JSONObject response = new JSONObject();
+            response.put("seller's login", login);
+            response.put("seller's login", password);
+            response.put("message", "seller login and password");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{sellerId}")
