@@ -11,7 +11,6 @@ public class Seller {
 
     //@Field("login")
     //@Indexed(unique = true)
-    @Id
     private String login;
     private String email;
     //@Field("password")
