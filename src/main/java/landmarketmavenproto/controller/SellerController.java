@@ -44,16 +44,19 @@ public class SellerController {
     public ResponseEntity<?> getSellerLoginAndPassword(@PathVariable(value = "login") String login) {
 
         Seller seller = srepository.findOne(login);
-        //String login = seller.getLogin();
-        String password = seller.getPassword();
-
         JSONObject response = new JSONObject();
+        if(this.equals(seller.getLogin() != null && seller.getPassword() != null)) {
+            login = seller.getLogin();
+            String password = seller.getPassword();
 
-        response.put("message", "seller login and password");
-        response.put("seller's login", login);
-        response.put("seller's password", password);
 
-        return new ResponseEntity<>(response, HttpStatus.OK);
+            response.put("message", "seller login and password");
+            response.put("seller's login", login);
+            response.put("seller's password", password);
+        }
+
+            return new ResponseEntity<>(response, HttpStatus.OK);
+
     }
 
 //    @RequestMapping(method = RequestMethod.GET, value = "/login")
