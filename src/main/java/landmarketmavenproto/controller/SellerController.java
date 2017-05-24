@@ -41,10 +41,10 @@ public class SellerController {
 
 
     @RequestMapping(method = RequestMethod.GET, value = "/{login}")
-    public ResponseEntity<?> getSellerLoginAndPassword(@PathVariable(value = "login") String login1) {
+    public ResponseEntity<?> getSellerLoginAndPassword(@PathVariable(value = "login") String login) {
 
-        Seller seller = srepository.findOne(login1);
-        String login = seller.getLogin();
+        Seller seller = srepository.findOne(login);
+        //String login = seller.getLogin();
         String password = seller.getPassword();
 
         JSONObject response = new JSONObject();
@@ -56,18 +56,18 @@ public class SellerController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/login")
-    public ResponseEntity<?> loginshow(@PathVariable(value = "login") String login, String password) {
-
-        if (login.equals(login != null && password!= null)){
-            JSONObject response = new JSONObject();
-            response.put("seller's login", login);
-            response.put("seller's login", password);
-            response.put("message", "seller login and password");
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+//    @RequestMapping(method = RequestMethod.GET, value = "/login")
+//    public ResponseEntity<?> loginshow(@PathVariable(value = "login") String login, String password) {
+//
+//        if (login.equals(login != null && password!= null)){
+//            JSONObject response = new JSONObject();
+//            response.put("seller's login", login);
+//            response.put("seller's login", password);
+//            response.put("message", "seller login and password");
+//            return new ResponseEntity<>(response, HttpStatus.OK);
+//        }
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{sellerId}")
     public ResponseEntity<?> editSeller(@PathVariable(value = "sellerId") String sellerId, @RequestBody Map<String, Object> sellerMap) {
