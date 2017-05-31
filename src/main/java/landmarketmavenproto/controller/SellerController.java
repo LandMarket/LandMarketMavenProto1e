@@ -1,6 +1,7 @@
 package landmarketmavenproto.controller;
 
 import landmarketmavenproto.model.Seller;
+import landmarketmavenproto.model.SellerAuthType;
 import landmarketmavenproto.repository.SellerRepository;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -135,4 +136,22 @@ public class SellerController {
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    @RequestMapping(method = RequestMethod.GET,value = "/{sellerlogin}")
+    public ResponseEntity<Object> login(@RequestBody SellerAuthType authType) {
+        if (authType == null || authType.getLogin() == null || authType.getPassword() == null) {
+            return new ResponseEntity<>("Error, there is no auth info", HttpStatus.UNAUTHORIZED);
+        }
+        if (authType.getLogin().equals("") || authType.getPassword().equals("")) {
+            return new ResponseEntity<>("Please fill in username and password", HttpStatus.UNAUTHORIZED);
+        } else if (srepository.findOne(authType.getLogin()) != null) {
+//            Client client = clientRepository.findClientByClientEmail(authType.getEmail());
+//            if (!utils.isPasswordCorrect(authType.getPassword(), client.getClientPassword())) {
+//                return new ResponseEntity<>("Wrong password", HttpStatus.UNAUTHORIZED);
+        }
+
+        return new ResponseEntity<>("OK!", HttpStatus.OK);
+
+
+        }
+
 }
