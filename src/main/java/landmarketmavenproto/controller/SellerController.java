@@ -39,24 +39,24 @@ public class SellerController {
         return new ResponseEntity<>(srepository.save(new Seller(login, email, password, confirm)), HttpStatus.OK);
     }
 
+//
+//    @RequestMapping(method = RequestMethod.GET, value = "/{sellerlogin}")
+//    public ResponseEntity<?> getSellerLoginAndPassword(@PathVariable(value = "sellerlogin") String login) {
+//
+//        Seller seller = srepository.findOne(login);
+//        JSONObject response = new JSONObject();
+//        if(this.equals(seller.getLogin() != null && seller.getPassword() != null)) {
+//            login = seller.getLogin();
+//            String password = seller.getPassword();
+//
+//            response.put("message", "seller login and password");
+//            response.put("seller's login", login);
+//            response.put("seller's password", password);
+//        }
+//            return new ResponseEntity<>(response, HttpStatus.OK);
+//    }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{sellerlogin}")
-    public ResponseEntity<?> getSellerLoginAndPassword(@PathVariable(value = "sellerlogin") String login) {
-
-        Seller seller = srepository.findOne(login);
-        JSONObject response = new JSONObject();
-        if(this.equals(seller.getLogin() != null && seller.getPassword() != null)) {
-            login = seller.getLogin();
-            String password = seller.getPassword();
-
-            response.put("message", "seller login and password");
-            response.put("seller's login", login);
-            response.put("seller's password", password);
-        }
-            return new ResponseEntity<>(response, HttpStatus.OK);
-    }
-
-//    @RequestMapping(method = RequestMethod.GET, value = "/login")
+    //    @RequestMapping(method = RequestMethod.GET, value = "/login")
 //    public ResponseEntity<?> loginshow(@PathVariable(value = "login") String login, String password) {
 //
 //        if (login.equals(login != null && password!= null)){
@@ -68,6 +68,35 @@ public class SellerController {
 //        }
 //        return new ResponseEntity<>(HttpStatus.OK);
 //    }
+    @PostMapping("/login")
+    public ResponseEntity<Object> login(@RequestBody Seller seller) {
+        if (seller == null || seller.getLogin() == null || seller.getPassword() == null) {
+            return new ResponseEntity<>("Error, there is no auth info", HttpStatus.UNAUTHORIZED);
+        }
+        if (seller.getLogin().equals("") || seller.getPassword().equals("")) {
+            return new ResponseEntity<>("Please fill in username and password", HttpStatus.UNAUTHORIZED);
+        } else if (seller.getLogin() != null) {
+            // Seller seller = SellerRepository.findOne(seller.getLogin());
+//        if (!utils.isPasswordCorrect(seller.getPassword(), seller.getPassword())) {
+//            return new ResponseEntity<>("Wrong password", HttpStatus.UNAUTHORIZED);
+       }
+            return new ResponseEntity<>(HttpStatus.OK);
+
+
+//    }else if (masterRepository.findByEmail(authType.getEmail()) != null){
+//
+//
+//        Master master = masterRepository.findByEmail(authType.getEmail());
+//        if (!utils.isPasswordCorrect(authType.getPassword(), master.getPassword())) {
+//            return new ResponseEntity<>("Wrong password", HttpStatus.UNAUTHORIZED);
+//        }
+//
+//
+//        return new ResponseEntity<>("{\"token\":" + "\"" + utils.buildJwt(master.getEmail()) + "\"}", HttpStatus.OK);
+//    }
+//    return new ResponseEntity<>("Please register",HttpStatus.UNAUTHORIZED);
+        }
+
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{sellerId}")
     public ResponseEntity<?> editSeller(@PathVariable(value = "sellerId") String sellerId, @RequestBody Map<String, Object> sellerMap) {
