@@ -68,19 +68,19 @@ public class SellerController {
 //        }
 //        return new ResponseEntity<>(HttpStatus.OK);
 //    }
-    @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody Seller seller) {
-        if (seller == null || seller.getLogin() == null || seller.getPassword() == null) {
-            return new ResponseEntity<>("Error, there is no auth info", HttpStatus.UNAUTHORIZED);
-        }
-        if (seller.getLogin().equals("") || seller.getPassword().equals("")) {
-            return new ResponseEntity<>("Please fill in username and password", HttpStatus.UNAUTHORIZED);
-        } else if (seller.getLogin() != null) {
-            // Seller seller = SellerRepository.findOne(seller.getLogin());
-//        if (!utils.isPasswordCorrect(seller.getPassword(), seller.getPassword())) {
-//            return new ResponseEntity<>("Wrong password", HttpStatus.UNAUTHORIZED);
-       }
-            return new ResponseEntity<>(HttpStatus.OK);
+//    @PostMapping("/login")
+//    public ResponseEntity<Object> login(@RequestBody Seller seller) {
+//        if (seller == null || seller.getLogin() == null || seller.getPassword() == null) {
+//            return new ResponseEntity<>("Error, there is no auth info", HttpStatus.UNAUTHORIZED);
+//        }
+//        if (seller.getLogin().equals("") || seller.getPassword().equals("")) {
+//            return new ResponseEntity<>("Please fill in username and password", HttpStatus.UNAUTHORIZED);
+//        } else if (seller.getLogin() != null) {
+//            // Seller seller = SellerRepository.findOne(seller.getLogin());
+////        if (!utils.isPasswordCorrect(seller.getPassword(), seller.getPassword())) {
+////            return new ResponseEntity<>("Wrong password", HttpStatus.UNAUTHORIZED);
+//       }
+//            return new ResponseEntity<>(HttpStatus.OK);
 
 
 //    }else if (masterRepository.findByEmail(authType.getEmail()) != null){
@@ -95,7 +95,7 @@ public class SellerController {
 //        return new ResponseEntity<>("{\"token\":" + "\"" + utils.buildJwt(master.getEmail()) + "\"}", HttpStatus.OK);
 //    }
 //    return new ResponseEntity<>("Please register",HttpStatus.UNAUTHORIZED);
-        }
+        //}
 
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{sellerId}")
