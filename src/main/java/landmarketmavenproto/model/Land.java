@@ -17,6 +17,7 @@ public class Land {
     private String owner;
 
 
+
     public Land() {
     }
 
