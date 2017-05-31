@@ -69,34 +69,7 @@ public class SellerController {
 //        }
 //        return new ResponseEntity<>(HttpStatus.OK);
 //    }
-//    @PostMapping("/login")
-//    public ResponseEntity<Object> login(@RequestBody Seller seller) {
-//        if (seller == null || seller.getLogin() == null || seller.getPassword() == null) {
-//            return new ResponseEntity<>("Error, there is no auth info", HttpStatus.UNAUTHORIZED);
-//        }
-//        if (seller.getLogin().equals("") || seller.getPassword().equals("")) {
-//            return new ResponseEntity<>("Please fill in username and password", HttpStatus.UNAUTHORIZED);
-//        } else if (seller.getLogin() != null) {
-//            // Seller seller = SellerRepository.findOne(seller.getLogin());
-////        if (!utils.isPasswordCorrect(seller.getPassword(), seller.getPassword())) {
-////            return new ResponseEntity<>("Wrong password", HttpStatus.UNAUTHORIZED);
-//       }
-//            return new ResponseEntity<>(HttpStatus.OK);
 
-
-//    }else if (masterRepository.findByEmail(authType.getEmail()) != null){
-//
-//
-//        Master master = masterRepository.findByEmail(authType.getEmail());
-//        if (!utils.isPasswordCorrect(authType.getPassword(), master.getPassword())) {
-//            return new ResponseEntity<>("Wrong password", HttpStatus.UNAUTHORIZED);
-//        }
-//
-//
-//        return new ResponseEntity<>("{\"token\":" + "\"" + utils.buildJwt(master.getEmail()) + "\"}", HttpStatus.OK);
-//    }
-//    return new ResponseEntity<>("Please register",HttpStatus.UNAUTHORIZED);
-        //}
 
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{sellerId}")
@@ -137,13 +110,13 @@ public class SellerController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @RequestMapping(method = RequestMethod.GET,value = "/{sellerlogin}")
-    public ResponseEntity<Object> login(@RequestBody SellerAuthType authType) {
-        if (authType == null || authType.getLogin() == null || authType.getPassword() == null) {
-            return new ResponseEntity<>("Error, there is no auth info", HttpStatus.UNAUTHORIZED);
+    public ResponseEntity<Object> login(@RequestBody Seller seller) {
+        if (seller == null || seller.getLogin() == null || seller.getPassword() == null) {
+            return new ResponseEntity<>("Error, there is no auth info", HttpStatus.CONFLICT);
         }
-        if (authType.getLogin().equals("") || authType.getPassword().equals("")) {
-            return new ResponseEntity<>("Please fill in username and password", HttpStatus.UNAUTHORIZED);
-        } else if (srepository.findOne(authType.getLogin()) != null) {
+        if (seller.getLogin().equals("") || seller.getPassword().equals("")) {
+            return new ResponseEntity<>("Please fill in username and password", HttpStatus.CONFLICT);
+        } else if (srepository.findOne(seller.getLogin()) != null) {
 //            Client client = clientRepository.findClientByClientEmail(authType.getEmail());
 //            if (!utils.isPasswordCorrect(authType.getPassword(), client.getClientPassword())) {
 //                return new ResponseEntity<>("Wrong password", HttpStatus.UNAUTHORIZED);
