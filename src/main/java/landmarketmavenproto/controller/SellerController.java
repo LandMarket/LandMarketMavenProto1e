@@ -110,7 +110,7 @@ public class SellerController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{sellerlogin}")
-    public ResponseEntity<?> login(@PathVariable Seller seller) {
+    public ResponseEntity<?> login(@RequestBody Seller seller) {
         if (seller == null || seller.getLogin() == null || seller.getPassword() == null) {
             return new ResponseEntity<>("Error, there is no auth info", HttpStatus.CONFLICT);
         }
