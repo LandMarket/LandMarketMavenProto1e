@@ -117,16 +117,11 @@ public class SellerController {
         if (seller.getLogin().equals("") || seller.getPassword().equals("")) {
             return new ResponseEntity<>("Please fill in username and password", HttpStatus.CONFLICT);
         } else if (srepository.findOne(seller.getLogin()) != null) {
-//            Client client = clientRepository.findClientByClientEmail(authType.getEmail());
-//            if (!utils.isPasswordCorrect(authType.getPassword(), client.getClientPassword())) {
-//                return new ResponseEntity<>("Wrong password", HttpStatus.UNAUTHORIZED);
-        }
             JSONObject response = new JSONObject();
             response.put("message", "sellers login");
-
             return new ResponseEntity<>(response, HttpStatus.OK);
-
-
+        }
+           return new ResponseEntity<>("Ok!", HttpStatus.OK);
     }
 
 }
