@@ -118,10 +118,11 @@ public class SellerController {
             return new ResponseEntity<>("Please fill in username and password", HttpStatus.CONFLICT);
         } else if (srepository.findOne(seller.getLogin()) != null) {
             JSONObject response = new JSONObject();
-            response.put("message", "sellers login");
+            response.put("login", seller.getLogin());
+            response.put("password", seller.getPassword());
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
-           return new ResponseEntity<>("Ok!", HttpStatus.OK);
+           return new ResponseEntity<>(seller.getLogin(), HttpStatus.OK);
     }
 
 }
