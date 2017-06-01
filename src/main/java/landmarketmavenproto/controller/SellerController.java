@@ -71,13 +71,12 @@ public class SellerController {
 //    }
 
 
-
     @RequestMapping(method = RequestMethod.PUT, value = "/{sellerId}")
     public ResponseEntity<?> editSeller(@PathVariable(value = "sellerId") String sellerId, @RequestBody Map<String, Object> sellerMap) {
 
-        Seller seller = new  Seller(sellerMap.get("login").toString(),
-                             sellerMap.get("email").toString(),sellerMap.get("password").toString(),
-                             sellerMap.get("confirm").toString());
+        Seller seller = new Seller(sellerMap.get("login").toString(),
+                sellerMap.get("email").toString(), sellerMap.get("password").toString(),
+                sellerMap.get("confirm").toString());
         seller.setId(sellerId);
 
         JSONObject response = new JSONObject();
@@ -109,7 +108,8 @@ public class SellerController {
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @RequestMapping(method = RequestMethod.GET,value = "/{sellerlogin}")
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{sellerlogin}")
     public ResponseEntity<?> login(@RequestBody Seller seller) {
         if (seller == null || seller.getLogin() == null || seller.getPassword() == null) {
             return new ResponseEntity<>("Error, there is no auth info", HttpStatus.CONFLICT);
@@ -121,10 +121,12 @@ public class SellerController {
 //            if (!utils.isPasswordCorrect(authType.getPassword(), client.getClientPassword())) {
 //                return new ResponseEntity<>("Wrong password", HttpStatus.UNAUTHORIZED);
         }
+            JSONObject response = new JSONObject();
+            response.put("message", "sellers login");
 
-        return new ResponseEntity<>("OK!", HttpStatus.OK);
+            return new ResponseEntity<>(response, HttpStatus.OK);
 
 
-        }
+    }
 
 }
